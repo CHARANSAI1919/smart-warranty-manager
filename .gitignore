@@ -1,0 +1,16 @@
+# Maven
+backend/target/
+
+# IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Environment / secrets
+.env
+*.env
