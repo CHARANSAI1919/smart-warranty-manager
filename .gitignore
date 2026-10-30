@@ -1,16 +1,19 @@
-# Maven
-backend/target/
-
-# IntelliJ
-.idea/
-*.iml
-
-# VS Code
-.vscode/
-
-# macOS
-.DS_Store
-
-# Environment / secrets
+# Environment variables and secrets
 .env
-*.env
+.env.*
+!.env.example
+
+# Node.js
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Java / Maven
+target/
+backend/target/
+*.class
+
+# IDE and operating system
+.DS_Store
+.idea/
+.vscode/
