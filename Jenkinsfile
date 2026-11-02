@@ -31,5 +31,26 @@ pipeline {
                 sh 'docker build -t smart-warranty-frontend:latest ./frontend'
             }
         }
+                stage('Push Images to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-credentials',
+                    usernameVariable: 'DOCKERHUB_USER',
+                    passwordVariable: 'DOCKERHUB_TOKEN'
+                )]) {
+                    sh '''
+                        echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USER" --password-stdin
+
+                        docker tag smart-warranty-backend:latest "$DOCKERHUB_USER/smart-warranty-backend:latest"
+                        docker tag smart-warranty-frontend:latest "$DOCKERHUB_USER/smart-warranty-frontend:latest"
+
+                        docker push "$DOCKERHUB_USER/smart-warranty-backend:latest"
+                        docker push "$DOCKERHUB_USER/smart-warranty-frontend:latest"
+
+                        docker logout
+                    '''
+                }
+            }
+        }
     }
 }
