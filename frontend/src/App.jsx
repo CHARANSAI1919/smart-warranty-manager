@@ -475,7 +475,7 @@ function App() {
   ).length;
 
   const navigation = [
-    "Dashboard",
+    "Yashboard",
     "My Products",
     "Repair History",
   ];
