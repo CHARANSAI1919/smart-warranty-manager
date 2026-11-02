@@ -27,8 +27,8 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 echo 'Building Docker images'
-                sh 'docker build -t smart-warranty-backend:latest ./backend'
-                sh 'docker build -t smart-warranty-frontend:latest ./frontend'
+                sh 'docker build --platform linux/amd64 -t smart-warranty-backend:latest ./backend'
+                sh 'docker build --platform linux/amd64 -t smart-warranty-frontend:latest ./frontend'
             }
         }
                 stage('Push Images to Docker Hub') {
